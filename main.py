@@ -11,11 +11,13 @@ puertos = serial.tools.list_ports.comports()
 # Imprime la información de cada puerto encontrado
 if puertos:
     for puerto in puertos:
-        print(f"Puerto: {puerto.device} - Descripción: {puerto.description} - HWID: {puerto.hwid}")
+        print(f"Puerto: {puerto.device} - Descripción: {puerto.description} - HWID: {puerto.hwid}\n")
+
+port = input("Seleccione un puerto serial: ")
 
 # Configuración del puerto serial
 ser = serial.Serial(
-    port='COMX',  # Reemplaza con el puerto serial correcto, por ejemplo 'COM3' en Windows o '/dev/ttyUSB0' en Linux.
+    port=port.strip().upper(),  # Reemplaza con el puerto serial correcto, por ejemplo 'COM3' en Windows o '/dev/ttyUSB0' en Linux.
     baudrate=9600,  # Reemplaza con la velocidad de baudios adecuada para tu FPGA
     parity=serial.PARITY_NONE, # PARITY_NONE significa que no se usará ningún bit de paridad, es decir, no se realizará verificación de errores mediante paridad.
     stopbits=serial.STOPBITS_ONE, # STOPBITS_ONE significa que se usará un solo bit de parada. El valor puede ser uno, uno y medio (STOPBITS_ONE_POINT_FIVE), o dos (STOPBITS_TWO).
