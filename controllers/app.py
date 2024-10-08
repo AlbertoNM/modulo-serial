@@ -3,7 +3,7 @@
 from PyQt5.QtWidgets import QMainWindow
 
 # Components imports
-from components.mainwindow import Ui_MainWindow
+from components.mainwindow_ui import Ui_MainWindow
 
 # Imports
 import serial.tools.list_ports
