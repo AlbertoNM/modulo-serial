@@ -46,17 +46,23 @@ if respuesta == bytes.fromhex('A6'):
 else:
     print(f"Respuesta inesperada: {respuesta.hex()}")
 
-# Cerrar el puerto serial cuando termines
-ser.close()
-
 ########################################
 ############ Envío cabecera ############
 ########################################
 
-
+# Cabecera para iniciar la lectura (C1 en hexadecimal)
+cabecera_lectura = bytes.fromhex('C1')
+ser.write(cabecera_lectura)  # Envía la cabecera C1
 
 ########################################
 ############# Espero datos #############
 ########################################
 
+# Leer los datos esperados desde el FPGA
+datos = ser.read(8)  # Lee 8 bytes
 
+# Imprime los datos recibidos en hexadecimal
+print("Datos recibidos:", datos.hex())
+
+# Cerrar el puerto serial
+ser.close()
