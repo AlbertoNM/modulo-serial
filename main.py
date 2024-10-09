@@ -51,7 +51,7 @@ else:
 ########################################
 
 # Cabecera para iniciar la lectura (C1 en hexadecimal)
-cabecera_lectura = bytes.fromhex('C1')
+cabecera_lectura = bytes.fromhex('100000')
 ser.write(cabecera_lectura)  # Envía la cabecera C1
 
 ########################################
@@ -63,6 +63,27 @@ datos = ser.read(8)  # Lee 8 bytes
 
 # Imprime los datos recibidos en hexadecimal
 print("Datos recibidos:", datos.hex())
+
+
+########################################
+############ Envío de datos ############
+########################################
+
+# String a enviar
+string_a_enviar = "Hola"
+
+# Convertir el string a bytes hexadecimal (usando codificación ASCII)
+# Convertimos cada carácter a su equivalente en bytes
+datos_a_enviar = string_a_enviar.encode('ascii')
+
+# Envía los datos al FPGA
+ser.write(datos_a_enviar)
+
+# Opción alternativa: convertir el string a su equivalente en formato hexadecimal manualmente
+# datos_hex = bytes.fromhex('486F6C61')  # Para el caso de "Hola"
+# ser.write(datos_hex)
+
+print(f"Datos enviados: {datos_a_enviar.hex()}")
 
 # Cerrar el puerto serial
 ser.close()
