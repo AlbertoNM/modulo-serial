@@ -72,16 +72,12 @@ print("Datos recibidos:", datos.hex())
 # String a enviar
 string_a_enviar = "Hola"
 
-# Convertir el string a bytes hexadecimal (usando codificación ASCII)
+# Convertir el string a bytes hexadecimal
 # Convertimos cada carácter a su equivalente en bytes
 datos_a_enviar = string_a_enviar.encode('ascii')
 
 # Envía los datos al FPGA
 ser.write(datos_a_enviar)
-
-# Opción alternativa: convertir el string a su equivalente en formato hexadecimal manualmente
-# datos_hex = bytes.fromhex('486F6C61')  # Para el caso de "Hola"
-# ser.write(datos_hex)
 
 print(f"Datos enviados: {datos_a_enviar.hex()}")
 
