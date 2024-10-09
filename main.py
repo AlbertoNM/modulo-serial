@@ -69,17 +69,19 @@ print("Datos recibidos:", datos.hex())
 ############ Envío de datos ############
 ########################################
 
-# String a enviar
-string_a_enviar = "Hola"
+# String a convertir y enviar
+string_a_convertir = "Hola"
 
-# Convertir el string a bytes hexadecimal
-# Convertimos cada carácter a su equivalente en bytes
-datos_a_enviar = string_a_enviar.encode('ascii')
+# Convertir el string a su representación hexadecimal
+hexadecimal = string_a_convertir.encode('utf-8').hex()
 
-# Envía los datos al FPGA
-ser.write(datos_a_enviar)
+# Convertir la representación hexadecimal a bytes para enviar por serial
+datos_hex = bytes.fromhex(hexadecimal)
 
-print(f"Datos enviados: {datos_a_enviar.hex()}")
+# Enviar los datos al FPGA
+ser.write(datos_hex)
+
+print(f"Datos enviados en hexadecimal: {hexadecimal}")
 
 # Cerrar el puerto serial
 ser.close()
