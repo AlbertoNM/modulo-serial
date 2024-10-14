@@ -17,12 +17,19 @@ class Dict2dataframe:
 
         return data_frame
 
+
 if __name__ == "__main__":
 
-    data = {
-        "name": "alberto",
-        "lastname": "narro"
+    datos = {
+        "WAC_ID": "",
+        "SYSTEM_ID": "",
+        "ID Radio": "",
+        "Nombre del Radio": "",
+        "No Serie": "",
+        "User": "",
+        "Date": "",
+        "Time": ""
     }
 
-    data_frame = Dict2dataframe(data_ui=data)
-    print(data_frame.transform())
+    frame = Dict2dataframe(data_ui=datos)
+    print(frame.transform())
