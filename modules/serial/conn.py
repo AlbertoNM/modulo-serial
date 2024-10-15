@@ -49,3 +49,8 @@ class Conn:
 
         else:
             print(f"Respuesta inesperada: {self.answer.hex()}")
+
+    def __del__(self):
+        
+        self.ser.close()
+        print("Puerto cerrado")
