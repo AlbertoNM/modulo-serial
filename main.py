@@ -1,7 +1,8 @@
 
 import serial.tools.list_ports
 
-from modules.serial.read import Read, Conn
+from modules.serial.read import Read
+from modules.serial.write import Write
 
 # Obtén la lista de puertos seriales disponibles
 puertos = serial.tools.list_ports.comports()
@@ -13,6 +14,10 @@ if puertos:
 else: 
     print("No se detectan puertos")
         
-port = input("Seleccione un puerto serial: ")
+port = input("\nSeleccione un puerto serial: ")
+
+frame = input("\nEscribe lo que quieras escribir en memoria:\n-> ")
+
+Write(port=port, frame=frame)
 
 Read(port=port)

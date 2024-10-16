@@ -17,12 +17,13 @@ class Read(Conn):
     def read(self):
 
         # Cabecera para iniciar la lectura de la segunda memoria
-        cabecera_lectura = bytes.fromhex('140F00')
+        cabecera_lectura = bytes.fromhex('140940')
         self.ser.write(cabecera_lectura)  # Envía la cabecera
 
         # Leer los datos esperados desde el FPGA
-        datos = self.ser.read(16)  # Lee 8 bytes
+        datos = self.ser.read(10)  # Num de bytes
 
         # Imprime los datos recibidos en hexadecimal
         print("Datos recibidos:", datos.hex())
+        print("Datos recibidos:", datos)
         
