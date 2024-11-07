@@ -18,6 +18,6 @@ port = input("\nSeleccione un puerto serial: ")
 
 frame = input("\nEscribe lo que quieras escribir en memoria:\n-> ")
 
-Write(port=port, frame=frame)
+constructor_write = Write(port=port, frame=frame)
 
-Read(port=port)
+constructor_write.write()
